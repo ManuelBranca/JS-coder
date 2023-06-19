@@ -1,10 +1,4 @@
 // Primer entrega
-// Calcular costo total de productos y/o servicios seleccionados por el usuario
-// Calcular valor final de un producto seleccionado en funcion de impuestos y descuentos
-// Calcular tiempo de espera promedio en relacion con la cantidad de turnos registrados
-// Calcular edad promedio de personas registradas 
-// Calcular pagos en cuotas sobre un monto determinado
-
 
 function promedio(a,b,c){
   let resultado;
@@ -12,16 +6,19 @@ function promedio(a,b,c){
   return resultado;
   } 
 
+function padres (nombre, telefono, hijo){
+  this.nombre = nombre;
+  this.telefono = telefono;
+  this.hijo = hijo;
+}
 
 let eleccion = 0;
-eleccion = prompt("ingrese 1 para calcular la nota final y 2 para calcular el promedio de edad")
+eleccion = prompt("Ingrese: " + "\n - 1 para calcular la nota final" +  "\n - 2 para calcular el promedio de edad" + "\n - 3 Agregar contactos de los padres de cada alumno")
 if (eleccion == 1){
   alert("Se selecciono la opcion 1 'Calcular la nota final' ")
 // Calcular nota final de alumnos ingresados
 let alumno = " ";
-let notaUno;
-let notaDos;
-let notaFinal;
+let notaUno, notaDos, notaFinal;
 let primeraVez = true;
 let alumnosAprobados = 0;
 let contador = 0;
@@ -79,4 +76,68 @@ while (persona !== "Esc" && persona !== "ESC" && persona !== "esc" ){
 if (edadNegativa == false && sinPersonas == false){
   alert("El promedio de edades es de " + sumatoriaDeEdades/cantidadDePersonas)
 }
+} else if (eleccion == 3){
+  // let seguir = true;
+  // while (seguir) {
+  //   let nombre = prompt("Ingrese el nombre del padre/madre:");
+  //   let telefono = prompt("Ingrese el número de teléfono del padre/madre:");
+  //   let hijo = prompt("Ingrese el nombre del hijo/a:");
+
+  //   let contactoPadres = new padres(nombre, telefono, hijo);
+
+  //   arrayDePadres.push(contactoPadres);
+    
+  //   seguir = prompt("¿Desea agregar otro contacto de padres? (si o no)").toLowerCase();
+  //   if (seguir === "si"){
+  //     seguir = true;
+  //   } else if (seguir === "no"){
+  //     seguir = false;
+  //   } else {
+  //     alert("No se ingreso ninguna de las opciones, se tomara 'no' como respuesta.")
+  //     seguir = false;
+  //   }
+  // }
+  // {
+  //   console.log("Todos los contactos:")
+  //   for (let i = 0; i < arrayDePadres.length ;i++){
+  //     let contactos = arrayDePadres[i];
+  //     console.log("Nombre:" + contactos.nombre)
+  //     console.log("Telefono:" + contactos.telefono)
+  //     console.log("Hijo/a:" + contactos.hijo)
+  //     console.log("-------------------------------")
+  //   }
+
+  // }
+  let seguir = true;
+  let arrayDePadres = [];
+while (seguir) {
+  let nombre = prompt("Ingrese el nombre del padre/madre:");
+  let telefono = prompt("Ingrese el número de teléfono del padre/madre:");
+  let hijo = prompt("Ingrese el nombre del hijo/a:");
+
+  let contactoPadres = new padres(nombre, telefono, hijo);
+
+  arrayDePadres.push(contactoPadres);
+
+  seguir = prompt("¿Desea agregar otro contacto de padres? (si o no)").toLowerCase();
+  if (seguir === "si") {
+    seguir = true;
+  } else if (seguir === "no") {
+    seguir = false;
+  } else {
+    alert("No se ingresó ninguna de las opciones, se tomará 'no' como respuesta.");
+    seguir = false;
+  }
 }
+
+console.log("Todos los contactos:");
+for (let i = 0; i < arrayDePadres.length; i++) {
+  let contactos = arrayDePadres[i];
+  console.log("Nombre: " + contactos.nombre);
+  console.log("Teléfono: " + contactos.telefono);
+  console.log("Hijo/a: " + contactos.hijo);
+  console.log("-------------------------------");
+}
+alert("Se pueden ver todos los contactos por consola.")
+}
+
