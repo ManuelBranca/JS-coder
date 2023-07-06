@@ -76,38 +76,8 @@ while (persona !== "Esc" && persona !== "ESC" && persona !== "esc" ){
 if (edadNegativa == false && sinPersonas == false){
   alert("El promedio de edades es de " + sumatoriaDeEdades/cantidadDePersonas)
 }
+// Segunda entrega
 } else if (eleccion == 3){
-  // let seguir = true;
-  // while (seguir) {
-  //   let nombre = prompt("Ingrese el nombre del padre/madre:");
-  //   let telefono = prompt("Ingrese el número de teléfono del padre/madre:");
-  //   let hijo = prompt("Ingrese el nombre del hijo/a:");
-
-  //   let contactoPadres = new padres(nombre, telefono, hijo);
-
-  //   arrayDePadres.push(contactoPadres);
-    
-  //   seguir = prompt("¿Desea agregar otro contacto de padres? (si o no)").toLowerCase();
-  //   if (seguir === "si"){
-  //     seguir = true;
-  //   } else if (seguir === "no"){
-  //     seguir = false;
-  //   } else {
-  //     alert("No se ingreso ninguna de las opciones, se tomara 'no' como respuesta.")
-  //     seguir = false;
-  //   }
-  // }
-  // {
-  //   console.log("Todos los contactos:")
-  //   for (let i = 0; i < arrayDePadres.length ;i++){
-  //     let contactos = arrayDePadres[i];
-  //     console.log("Nombre:" + contactos.nombre)
-  //     console.log("Telefono:" + contactos.telefono)
-  //     console.log("Hijo/a:" + contactos.hijo)
-  //     console.log("-------------------------------")
-  //   }
-
-  // }
   let seguir = true;
   let arrayDePadres = [];
 while (seguir) {

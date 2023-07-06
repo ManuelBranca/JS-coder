@@ -11,64 +11,100 @@
     <title>E-Commerce</title>
 </head>
 
-<body>
+<body class="bg">
     <header>
-        <h1 class="d-flex justify-content-center bg-gray">MBCommerce</h1>
-        <nav class="container d-flex justify-content-center ">
-            <ul>
-                <li>Productos</li>
-                <li>Ofertas</li>
-                <li>Contactos</li>
-            </ul>
-        </nav>
+        <div class="bg-header bx-shadow">
+        <h1 class="container-fluid text-center fw-bold main-title">MBCommerce</h1>
+        <ul class="nav nav-underline d-flex justify-content-center nav-fondo gap-5">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Productos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav-color" href="#">Mi Carrito</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav-color" href="#">Contacto</a>
+            </li>
+        </ul>
+        </div>
     </header>
 
     <main>
-        <h2 class="container d-flex justify-content-center bg-primary ">Vea Nuestros Productos Mas Buscados</h2>
-        <section class="container text-center">
+        <h2 class="container d-flex justify-content-center text-center mt-2 p-1 h2-color ">Vea Nuestros Productos Mas
+            Buscados</h2>
+        <section class="container text-center bg-cards ">
             <div class="row">
-                <article class="col">
-                    <div>
-                        <img src="" alt="Foto del producto principal">
-                        <h3>Producto1</h3>
+                <article class="container col card mod m-3">
+                    <div class="mt-2 mb-2">
+                        <img src="/img/new-balance.jpg" class="img-fluid" alt="Foto del producto principal">
+                        <h3 class="product-name mt-1 p-1">574 - New Balance</h3>
                         <p>Descripcion Lorem ipsum dolor sit amet.</p>
+                        <a class="btn btn-personalizado" href="">Comprar</a>
                     </div>
                 </article>
-                <article class="col">
-                    <img src="" alt="Foto del producto principal">
-                    <h3>Producto2</h3>
-                    <p>Descripcion Lorem ipsum dolor sit amet.</p>
+                <article class="container col card mod m-3">
+                    <div class="mt-2 mb-2">
+                        <img class="img-fluid" src="/img/airmax-nike.jpg" alt="Foto del producto principal">
+                        <h3>Air Max - Nike</h3>
+                        <p>Descripcion Lorem ipsum dolor sit amet.</p>
+                        <a class="btn btn-personalizado" href="">Comprar</a>
+                    </div>
                 </article>
-                <article class="col">
-                    <img src="" alt="Foto del producto principal">
-                    <h3>Producto3</h3>
-                    <p>Descripcion Lorem ipsum dolor sit amet.</p>
+                <article class="container col card mod m-3">
+                    <div class="mt-2 mb-2">
+                        <img class="img-fluid" src="/img/galaxy6-adidas.jpg" alt="Foto del producto principal">
+                        <h3>Galaxy 6 - Adidas</h3>
+                        <p>Descripcion Lorem ipsum dolor sit amet.</p>
+                        <a class="btn btn-personalizado" href="">Comprar</a>
+                    </div>
                 </article>
             </div>
             <div class="row">
-            <article class="col">
-                <img src="" alt="Foto del producto principal">
-                <h3>Producto4</h3>
-                <p>Descripcion Lorem ipsum dolor sit amet.</p>
-            </article>
-            <article class="col">
-                <img src="" alt="Foto del producto principal">
-                <h3>Producto5</h3>
-                <p>Descripcion Lorem ipsum dolor sit amet.</p>
-            </article>
-            <article class="col">
-                <img src="" alt="Foto del producto principal">
-                <h3>Producto6</h3>
-                <p>Descripcion Lorem ipsum dolor sit amet.</p>
-            </article>
-        </div>
+                <article class="container col card mod m-3">
+                    <div class="mt-2 mb-2">
+                        <img class="img-fluid" src="img/puma-xray2.jpg" alt="Foto del producto principal">
+                        <h3>Xray 2 - Puma</h3>
+                        <p>Descripcion Lorem ipsum dolor sit amet.</p>
+                        <a class="btn btn-personalizado" href="">Comprar</a>
+                    </div>
+                </article>
+                <article class="container col card mod m-3">
+                    <div class="mt-2 mb-2">
+                        <img class="img-fluid" src="img/superstar-clasicas.jpg" alt="Foto del producto principal">
+                        <h3>Superstar Clasicas - Adidas</h3>
+                        <p>Descripcion Lorem ipsum dolor sit amet.</p>
+                        <a class="btn btn-personalizado" href="">Comprar</a>
+                    </div>
+                </article>
+                <article class="container col card mod m-3">
+                    <div class="mt-2 mb-2">
+                        <img class="img-fluid" src="img/urbanadecuero-dinobutelli.jpg" alt="Foto del producto principal">
+                        <h3>Urbana de cuero - Dino butelli</h3>
+                        <p>Descripcion Lorem ipsum dolor sit amet.</p>
+                        <a class="btn btn-personalizado" href="">Comprar</a>
+                    </div>
+                </article>
+            </div>
         </section>
     </main>
 
-    <script src="./js/index.js"></script>
+    <!-- <script src="./js/index.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
+    <footer class="bg-footer">
+        <hr>
+        <div class="row">
+        <div class="col text-center">
+            <p>Dirección:</p>
+            <p>Av.Libertador 1234</p>
+        </div>
+        <div class="col text-center">
+            <p>Vea Nuestras Prendas En Modelos!</p>
+            <a href="https:/www.instagram.com"><img class="instagram-logo" src="./img/instagram-logo.webp" alt="Logo de Instagram"></a>
+        </div>
+        </div>
+    </footer>
 </body>
 
 </html>
