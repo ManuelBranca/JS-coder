@@ -1,113 +1,56 @@
-// Primer entrega
+// lista de todos los contenedores de productos
+const listaContenedores = document.querySelector('.seccionProductos')
 
-function promedio(a,b,c){
-  let resultado;
-  resultado = (a+b)/c
-  return resultado;
-  } 
+let arrayDeProductos = [];
 
-function padres (nombre, telefono, hijo){
-  this.nombre = nombre;
-  this.telefono = telefono;
-  this.hijo = hijo;
-}
+// agarro info del producto
+listaContenedores.addEventListener('click', e => {
+    if (e.target.classList.contains('btn')) {
+        const productos = (e.target.parentElement);
 
-let eleccion = 0;
-eleccion = prompt("Ingrese: " + "\n - 1 para calcular la nota final" +  "\n - 2 para calcular el promedio de edad" + "\n - 3 Agregar contactos de los padres de cada alumno")
-if (eleccion == 1){
-  alert("Se selecciono la opcion 1 'Calcular la nota final' ")
-// Calcular nota final de alumnos ingresados
-let alumno = " ";
-let notaUno, notaDos, notaFinal;
-let primeraVez = true;
-let alumnosAprobados = 0;
-let contador = 0;
-while (alumno !== "Esc" && alumno !== "ESC" && alumno !== "esc") {
-  if (primeraVez) {
-    alumno = prompt("Ingrese el nombre y el apellido del alumno o Esc para finalizar");
-    contador ++;
-  } else {
-    alumno = prompt("Ingrese el nombre y el apellido del siguiente alumno o Esc para finalizar");
-    contador ++;
-  }
-  if (alumno !== "Esc" && alumno !== "ESC" && alumno !== "esc") {
-    alert("A continuacion ingrese las notas de los dos parciales")
-    notaUno = parseInt( prompt("Ingrese la nota del primer parcial"))
-    notaDos = parseInt( prompt("Ingrese la nota del segundo parcial"))
-    notaFinal = promedio (notaUno, notaDos, 2);
-    if (notaFinal >= 6){
-      alumnosAprobados ++;
+        const infoProducto = {
+            cantidad: 1,
+            nombre: productos.querySelector('h3').textContent,
+            precio: productos.querySelector('p').textContent,
+            url: productos.querySelector('img').src
+        }
+
+        const existe = arrayDeProductos.some(productos => productos.nombre === infoProducto.nombre)
+
+        if (existe) {
+            const producto = arrayDeProductos.map(productos => {
+                if (productos.nombre === infoProducto.nombre) {
+                    productos.cantidad++;
+                    return productos;
+                } else {
+                    return productos;
+                }
+            })
+            arrayDeProductos = [...producto]
+        } else {
+            //agregar al principio
+            arrayDeProductos.unshift(infoProducto)
+        }
+
+
+        console.log(arrayDeProductos)
     }
-    alert ("La nota final de " + alumno + " es de " + notaFinal)
-    primeraVez = false;
-  } else if (contador == 0 ){
-    alert("no se ingreso ningun alumno")
-  } else {
-    alert ("Finalizo la lista de alumnos.")
-  }
-}
-alert("Si desea ver la cantidad de alumnos aprobados lo puede hacer presionando 'F12' luego de apretar el boton de 'aceptar'");
-console.log("la cantidad de alumnos aprobados es de " + alumnosAprobados);
-} else if (eleccion == 2){
-// Calcular edad promedio de personas registrada
-alert("elegiste la opcion 2 'Calcular la edad promedio de personas registradas'")
-let persona = " " ;
-let edad = 0;
-let sumatoriaDeEdades = 0;
-let cantidadDePersonas = 0;
-let edadNegativa = false;
-let sinPersonas = false;
-while (persona !== "Esc" && persona !== "ESC" && persona !== "esc" ){
-  persona = prompt("Ingrese el nombre de la persona, 'Esc' para terminar");
-  if(persona !== "Esc" && persona !== "ESC" && persona !== "esc" ){
-  cantidadDePersonas ++;
-  edad = parseInt(prompt("Ingrese la edad aqui"));
-  if (edad >= 0){
-  sumatoriaDeEdades += edad;
-  } else {
-    alert("se ingreso una edad negativa");
-    edadNegativa = true;
-  } 
-} else {
-  alert ("No se ingreso ninguna edad")
-  sinPersonas = true;
-}
-}
-if (edadNegativa == false && sinPersonas == false){
-  alert("El promedio de edades es de " + sumatoriaDeEdades/cantidadDePersonas)
-}
-// Segunda entrega
-} else if (eleccion == 3){
-  let seguir = true;
-  let arrayDePadres = [];
-while (seguir) {
-  let nombre = prompt("Ingrese el nombre del padre/madre:");
-  let telefono = prompt("Ingrese el número de teléfono del padre/madre:");
-  let hijo = prompt("Ingrese el nombre del hijo/a:");
+})
 
-  let contactoPadres = new padres(nombre, telefono, hijo);
-
-  arrayDePadres.push(contactoPadres);
-
-  seguir = prompt("¿Desea agregar otro contacto de padres? (si o no)").toLowerCase();
-  if (seguir === "si") {
-    seguir = true;
-  } else if (seguir === "no") {
-    seguir = false;
-  } else {
-    alert("No se ingresó ninguna de las opciones, se tomará 'no' como respuesta.");
-    seguir = false;
-  }
-}
-
-console.log("Todos los contactos:");
-for (let i = 0; i < arrayDePadres.length; i++) {
-  let contactos = arrayDePadres[i];
-  console.log("Nombre: " + contactos.nombre);
-  console.log("Teléfono: " + contactos.telefono);
-  console.log("Hijo/a: " + contactos.hijo);
-  console.log("-------------------------------");
-}
-alert("Se pueden ver todos los contactos por consola.")
-}
+arrayDeProductos.forEach((el) => {
+    const tarjeta = document.createElement("div");
+    tarjeta.classList.add("card mod");
+    tarjeta.innerHTML = `
+    <img src="${el.url}" class="img-fluid" alt="Foto del producto principal">
+    <h3 class="product-name mt-1 p-1">${el.nombre}</h3>
+    <p>${el.precio}</p>
+    <input type="button" value="Agregar al Carrito" class="btn btn-personalizado" id="boton">
+    `
+    const buttonAgregar = document.createElement("button");
+    buttonAgregar.innerText = "Agregar"
+    buttonAgregar.addEventListener("click",()=>{
+        arrayDeProductos.push(el);
+        localStorage.setItem("carrito",JSON.stringify(arrayDeProductos) )
+    })
+})
 
