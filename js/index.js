@@ -1,56 +1,86 @@
-// lista de todos los contenedores de productos
-const listaContenedores = document.querySelector('.seccionProductos')
+const productos=[
+    {
+        cantidad: 0,
+        id: 1,
+        nombre:"574 - New Balance",
+        precio: 33000,
+        urlImg: "../img/new-balance.jpg"
+    },
+    {
+        cantidad: 0,
+        id:2,
+        nombre: "Air Max - Nike",
+        precio: 40000,
+        urlImg: "../img/airmax-nike.jpg"
+    },
+    {
+        cantidad: 0,
+        id:3,
+        nombre: "Galaxy 6 - Adidas",
+        precio: 29000,
+        urlImg: "../img/galaxy6-adidas.jpg"
+    }]
 
-let arrayDeProductos = [];
-
-// agarro info del producto
-listaContenedores.addEventListener('click', e => {
-    if (e.target.classList.contains('btn')) {
-        const productos = (e.target.parentElement);
-
-        const infoProducto = {
-            cantidad: 1,
-            nombre: productos.querySelector('h3').textContent,
-            precio: productos.querySelector('p').textContent,
-            url: productos.querySelector('img').src
-        }
-
-        const existe = arrayDeProductos.some(productos => productos.nombre === infoProducto.nombre)
-
-        if (existe) {
-            const producto = arrayDeProductos.map(productos => {
-                if (productos.nombre === infoProducto.nombre) {
-                    productos.cantidad++;
-                    return productos;
-                } else {
-                    return productos;
-                }
-            })
-            arrayDeProductos = [...producto]
-        } else {
-            //agregar al principio
-            arrayDeProductos.unshift(infoProducto)
-        }
-
-
-        console.log(arrayDeProductos)
+const productos2 = [
+    {
+        cantidad: 0,
+        id:4,
+        nombre: "Xray 2 - Puma",
+        precio: 25000,
+        urlImg: "../img/puma-xray2.jpg"
+    },
+    {
+        cantidad: 0,
+        id:5,
+        nombre: "Superstar Clasicas - Adidas",
+        precio: 27000,
+        urlImg: "../img/superstar-clasicas.jpg"
+    },
+    {
+        cantidad: 0,
+        id:6,
+        nombre: "Urbana de cuero - Dino Butelli",
+        precio: 32000,
+        urlImg: "../img/urbanadecuero-dinobutelli.jpg"
     }
-})
+]
+const ArrayDeProductos = [...productos,...productos2];
+console.log(ArrayDeProductos);
 
-arrayDeProductos.forEach((el) => {
-    const tarjeta = document.createElement("div");
-    tarjeta.classList.add("card mod");
-    tarjeta.innerHTML = `
-    <img src="${el.url}" class="img-fluid" alt="Foto del producto principal">
-    <h3 class="product-name mt-1 p-1">${el.nombre}</h3>
-    <p>${el.precio}</p>
-    <input type="button" value="Agregar al Carrito" class="btn btn-personalizado" id="boton">
-    `
-    const buttonAgregar = document.createElement("button");
-    buttonAgregar.innerText = "Agregar"
-    buttonAgregar.addEventListener("click",()=>{
-        arrayDeProductos.push(el);
-        localStorage.setItem("carrito",JSON.stringify(arrayDeProductos) )
-    })
-})
+localStorage.setItem("productos",JSON.stringify(productos))
+console.log(productos)
 
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+const containerProductos = document.getElementById("containerProductos");
+function mostrarProductos(array){
+    containerProductos.innerHTML="";
+    array.forEach(e => {
+        const article = document.createElement("article")
+        article.className= "container col-3 card mod m-3"
+        article.innerHTML=`
+        <div class="mt-2 mb-2">
+            <img class="img-fluid" src="${e.urlImg}" alt="Foto del producto principal">
+            <h3>${e.nombre}</h3>
+            <p>$ ${e.precio}</p>
+            <input type="button" value="Agregar al Carrito" class="btn btn-personalizado" id="${e.id}">
+        </div>
+        `
+        containerProductos.appendChild(article);
+        document.getElementById(e.id).addEventListener("click",(event) =>{
+            if(carrito.some(el=>el.id==e.id)){
+            carrito.find(p=>p.id==e.id).cantidad++;
+            }else{
+                carrito.push({...e,cantidad:1});                
+            }
+            localStorage.setItem("carrito",JSON.stringify(carrito));
+        });
+    });
+}
+mostrarProductos(ArrayDeProductos)
+
+localStorage.setItem("carrito2",JSON.stringify(productos2))
+console.log(productos2)
+
+
+localStorage.setItem("arrayCarrito",JSON.stringify( ArrayDeProductos))
