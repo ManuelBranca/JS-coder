@@ -99,21 +99,25 @@ bx-shadow {
 .btn-compra{
     background: #16917c;
     color: rgb(4, 202, 4);
+    margin-bottom: 10px;
 }
 
 .btn-compra:hover{
     border: solid green 1px;
     background: whitesmoke;
+    margin-bottom: 10px;
 }
 
 .btn-eliminar{
     background-color: #940f0fb9;
     color: red;
+    margin-bottom: 10px;
 }
 
 .btn-eliminar:hover{
     border: solid red 1px;
     background-color: whitesmoke;
+    margin-bottom: 10px;
 }
 /* footer */
 .bg-footer {

@@ -84,3 +84,10 @@ console.log(productos2)
 
 
 localStorage.setItem("arrayCarrito",JSON.stringify( ArrayDeProductos))
+
+// const span = document.getElementById("span");
+// span.addEventListener("keypress",cambiarNumero)
+
+// function cambiarNumero {
+
+// }
