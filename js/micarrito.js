@@ -1,6 +1,7 @@
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 const containerCarrito = document.getElementById("containerCarrito");
 
+
 function pintarCarrito(array) {
     containerCarrito.innerHTML = "";
     array.forEach(e => {

@@ -4,21 +4,21 @@ const productos = [
         id: 1,
         nombre: "574 - New Balance",
         precio: 33000,
-        urlImg: "../img/new-balance.jpg"
+        urlImg: "./img/new-balance.jpg"
     },
     {
         cantidad: 0,
         id: 2,
         nombre: "Air Max - Nike",
         precio: 40000,
-        urlImg: "../img/airmax-nike.jpg"
+        urlImg: "./img/airmax-nike.jpg"
     },
     {
         cantidad: 0,
         id: 3,
         nombre: "Galaxy 6 - Adidas",
         precio: 29000,
-        urlImg: "../img/galaxy6-adidas.jpg"
+        urlImg: "./img/galaxy6-adidas.jpg"
     }]
 
 const productos2 = [
@@ -27,21 +27,21 @@ const productos2 = [
         id: 4,
         nombre: "Xray 2 - Puma",
         precio: 25000,
-        urlImg: "../img/puma-xray2.jpg"
+        urlImg: "./img/puma-xray2.jpg"
     },
     {
         cantidad: 0,
         id: 5,
         nombre: "Superstar Clasicas - Adidas",
         precio: 27000,
-        urlImg: "../img/superstar-clasicas.jpg"
+        urlImg: "./img/superstar-clasicas.jpg"
     },
     {
         cantidad: 0,
         id: 6,
         nombre: "Urbana de Cuero - Dino Butelli",
         precio: 32000,
-        urlImg: "../img/urbanadecuero-dinobutelli.jpg"
+        urlImg: "./img/urbanadecuero-dinobutelli.jpg"
     }
 ]
 const ArrayDeProductos = [...productos, ...productos2];
