@@ -110,7 +110,10 @@ function comprarTodo() {
                 }
             });
     } else {
-        alert("El carrito está vacío");
+        Swal.fire({
+            icon: 'error',
+            title: 'El carrito esta vacio',
+        });
     }
     carrito = [];
     pintarCarrito(carrito);
