@@ -1,6 +1,28 @@
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 const containerCarrito = document.getElementById("containerCarrito");
 
+function obtenerValorDolarDesdeAPI() {
+    return fetch('https://criptoya.com/api/dolar')
+        .then(response => response.json())
+        .then(data => data.oficial)
+        .catch(error => {
+            console.error('Error al obtener el valor del dólar:', error);
+            return null;
+        });
+}
+
+function convertirPesosADolares(valorEnPesos) {
+    return obtenerValorDolarDesdeAPI().then(valorDolar => {
+        if (valorDolar !== null) {
+            const valorEnDolares = (valorEnPesos / valorDolar).toFixed(2);
+            return valorEnDolares;
+        } else {
+            console.error('No se pudo obtener el valor del dólar desde la API.');
+            return null;
+        }
+    });
+}
+
 function pintarCarrito(array) {
     containerCarrito.innerHTML = "";
     array.forEach(e => {
@@ -71,17 +93,24 @@ function calcularValor(array) {
     return sumatoria;
 }
 
-
 function comprarTodo() {
-    if (carrito !== 0) {
-        const totalCompra = calcularValor(carrito)
-        Swal.fire(
-            'Se ha completado la compra correctamente!',
-            'El monto pagado fue de $' + totalCompra,
-            'success'
-        )
+    if (carrito.length !== 0) {
+        const totalCompra = calcularValor(carrito);
+        convertirPesosADolares(totalCompra)
+            .then(valorEnDolares => {
+                if (valorEnDolares !== null) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Se ha completado la compra correctamente!',
+                        text: 'El monto pagado fue de $' + totalCompra + '\n . Su valor en dólares es de: $' + valorEnDolares,
+
+                    });
+                } else {
+                    console.error('No se pudo realizar la conversión a dólares.');
+                }
+            });
     } else {
-        alert("El carrito esta vacio")
+        alert("El carrito está vacío");
     }
     carrito = [];
     pintarCarrito(carrito);
